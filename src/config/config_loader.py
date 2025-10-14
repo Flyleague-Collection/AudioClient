@@ -8,8 +8,8 @@ from loguru import logger
 
 from src.constants import config_path, config_version
 from src.model.config import VersionType
-from src.utils.version import Version
 from src.utils.file_utils import check_directory
+from src.utils.version import Version
 
 
 class BaseConfig(ABC):
@@ -43,7 +43,19 @@ class BaseConfig(ABC):
 
 class Config(BaseConfig):
     config_version: str = "1.0.0"
+    log_level: str = "INFO"
+    account: str = ""
+    password: str = ""
+    remember_me: bool = False
     debug_mode: bool = False
+    base_url: str = "http://127.0.0.1:6810"
+    server_host: str = "127.0.0.1"
+    server_tcp_port: int = 6808
+    server_udp_port: int = 6807
+    audio_driver: str = "自动"
+    audio_input: str = "默认"
+    audio_output: str = "默认"
+    ptt_key: str = "Key.ctrl_l"
     _config_save_callbacks: list[Callable[[], None]] = []
 
     def parse_config(self, data: dict) -> None:
@@ -80,12 +92,23 @@ class Config(BaseConfig):
     def config(self) -> dict:
         data = {
             "config_version": self.config_version,
-            "debug_mode": self.debug_mode
+            "log_level": self.log_level,
+            "account": self.account,
+            "password": self.password,
+            "remember_me": self.remember_me,
+            "debug_mode": self.debug_mode,
+            "base_url": self.base_url,
+            "server_host": self.server_host,
+            "server_tcp_port": self.server_tcp_port,
+            "server_udp_port": self.server_udp_port,
+            "audio_driver": self.audio_driver,
+            "audio_input": self.audio_input,
+            "audio_output": self.audio_output,
+            "ptt_key": self.ptt_key
         }
         if not data["remember_me"]:
-            data["callsign"] = ""
-            data["email"] = ""
-            data["hoppie_code"] = ""
+            data["account"] = ""
+            data["password"] = ""
         return data
 
 

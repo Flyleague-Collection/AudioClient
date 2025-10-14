@@ -1,4 +1,4 @@
-from src.model.config import VersionType
+from src.model import VersionType
 
 
 class Version:

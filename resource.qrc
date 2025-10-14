@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="icon">
+    <file alias="logo">icon/Logo.png</file>
+    <file alias="setting">icon/settings.svg</file>
+  </qresource>
+  <qresource prefix="style">
+    <file>style/style.qss</file>
+  </qresource>
+</RCC>

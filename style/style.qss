@@ -1,0 +1,34 @@
+* {
+    color: #ffffff;
+}
+
+#loading_widget {
+    background: transparent;
+}
+
+QLabel#title_label {
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+}
+
+QLabel#status_label {
+    color: #6c757d;
+    font-size: 12px;
+    padding: 5px;
+    background: transparent;
+}
+
+QLabel#loading_text {
+    color: #495057;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 8px;
+    background: transparent;
+}
+
+QPushButton#button_rx,
+QPushButton#button_tx {
+    background-color: rgb(189, 189, 189);
+    color: black;
+}

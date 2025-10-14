@@ -1,7 +1,7 @@
 from datetime import datetime
 from os import getcwd
 from os.path import join
-from sys import stdout, exit
+from sys import exit, stdout
 
 from loguru import logger
 
