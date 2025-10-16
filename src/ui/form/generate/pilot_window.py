@@ -16,202 +16,229 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QImage, QKeySequence, QLinearGradient, QPainter,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QGridLayout, QGroupBox, QHBoxLayout,
-    QLabel, QPushButton, QSizePolicy, QSpacerItem,
+    QLabel, QLineEdit, QSizePolicy, QSpacerItem,
     QTabWidget, QVBoxLayout, QWidget)
+
+from src.ui.component.selected_button import SelectedButton
 
 class Ui_ClientWindow(object):
     def setupUi(self, ClientWindow):
         if not ClientWindow.objectName():
             ClientWindow.setObjectName(u"ClientWindow")
-        ClientWindow.resize(939, 413)
+        ClientWindow.resize(790, 413)
         font = QFont()
         font.setFamilies([u"Leelawadee UI"])
-        font.setPointSize(12)
+        font.setPointSize(10)
         ClientWindow.setFont(font)
         self.gridLayout_2 = QGridLayout(ClientWindow)
         self.gridLayout_2.setObjectName(u"gridLayout_2")
-        self.groupBox = QGroupBox(ClientWindow)
-        self.groupBox.setObjectName(u"groupBox")
-        self.groupBox.setFont(font)
-        self.gridLayout_3 = QGridLayout(self.groupBox)
+        self.group_com = QGroupBox(ClientWindow)
+        self.group_com.setObjectName(u"group_com")
+        self.group_com.setFont(font)
+        self.gridLayout_3 = QGridLayout(self.group_com)
         self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.gridLayout = QGridLayout()
-        self.gridLayout.setObjectName(u"gridLayout")
-        self.label_2 = QLabel(self.groupBox)
-        self.label_2.setObjectName(u"label_2")
-        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Preferred)
+        self.layout_coms = QGridLayout()
+        self.layout_coms.setObjectName(u"layout_coms")
+        self.button_com2_tx = SelectedButton(self.group_com)
+        self.button_com2_tx.setObjectName(u"button_com2_tx")
+        sizePolicy = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.label_2.sizePolicy().hasHeightForWidth())
-        self.label_2.setSizePolicy(sizePolicy)
-        self.label_2.setMinimumSize(QSize(80, 0))
-        self.label_2.setFont(font)
+        sizePolicy.setHeightForWidth(self.button_com2_tx.sizePolicy().hasHeightForWidth())
+        self.button_com2_tx.setSizePolicy(sizePolicy)
 
-        self.gridLayout.addWidget(self.label_2, 1, 0, 1, 1)
+        self.layout_coms.addWidget(self.button_com2_tx, 1, 2, 1, 1)
 
-        self.label_4 = QLabel(self.groupBox)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setFont(font)
+        self.button_com1_rx = SelectedButton(self.group_com)
+        self.button_com1_rx.setObjectName(u"button_com1_rx")
+        sizePolicy.setHeightForWidth(self.button_com1_rx.sizePolicy().hasHeightForWidth())
+        self.button_com1_rx.setSizePolicy(sizePolicy)
 
-        self.gridLayout.addWidget(self.label_4, 0, 1, 1, 1)
+        self.layout_coms.addWidget(self.button_com1_rx, 0, 3, 1, 1)
 
-        self.label = QLabel(self.groupBox)
-        self.label.setObjectName(u"label")
-        sizePolicy.setHeightForWidth(self.label.sizePolicy().hasHeightForWidth())
-        self.label.setSizePolicy(sizePolicy)
-        self.label.setMinimumSize(QSize(80, 0))
-        self.label.setFont(font)
+        self.label_com2_freq = QLabel(self.group_com)
+        self.label_com2_freq.setObjectName(u"label_com2_freq")
+        self.label_com2_freq.setMinimumSize(QSize(100, 0))
+        font1 = QFont()
+        font1.setFamilies([u"Leelawadee UI"])
+        font1.setPointSize(12)
+        self.label_com2_freq.setFont(font1)
 
-        self.gridLayout.addWidget(self.label, 0, 0, 1, 1)
+        self.layout_coms.addWidget(self.label_com2_freq, 1, 1, 1, 1)
 
-        self.pushButton = QPushButton(self.groupBox)
-        self.pushButton.setObjectName(u"pushButton")
-        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Fixed)
+        self.label_com2 = QLabel(self.group_com)
+        self.label_com2.setObjectName(u"label_com2")
+        sizePolicy1 = QSizePolicy(QSizePolicy.Policy.Fixed, QSizePolicy.Policy.Preferred)
         sizePolicy1.setHorizontalStretch(0)
         sizePolicy1.setVerticalStretch(0)
-        sizePolicy1.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy1)
+        sizePolicy1.setHeightForWidth(self.label_com2.sizePolicy().hasHeightForWidth())
+        self.label_com2.setSizePolicy(sizePolicy1)
+        self.label_com2.setMinimumSize(QSize(80, 0))
+        self.label_com2.setFont(font1)
 
-        self.gridLayout.addWidget(self.pushButton, 0, 2, 1, 1)
+        self.layout_coms.addWidget(self.label_com2, 1, 0, 1, 1)
 
-        self.label_3 = QLabel(self.groupBox)
-        self.label_3.setObjectName(u"label_3")
-        self.label_3.setFont(font)
+        self.button_com1_tx = SelectedButton(self.group_com)
+        self.button_com1_tx.setObjectName(u"button_com1_tx")
+        sizePolicy.setHeightForWidth(self.button_com1_tx.sizePolicy().hasHeightForWidth())
+        self.button_com1_tx.setSizePolicy(sizePolicy)
 
-        self.gridLayout.addWidget(self.label_3, 1, 1, 1, 1)
+        self.layout_coms.addWidget(self.button_com1_tx, 0, 2, 1, 1)
 
-        self.pushButton_2 = QPushButton(self.groupBox)
-        self.pushButton_2.setObjectName(u"pushButton_2")
-        sizePolicy1.setHeightForWidth(self.pushButton_2.sizePolicy().hasHeightForWidth())
-        self.pushButton_2.setSizePolicy(sizePolicy1)
+        self.label_com1 = QLabel(self.group_com)
+        self.label_com1.setObjectName(u"label_com1")
+        sizePolicy1.setHeightForWidth(self.label_com1.sizePolicy().hasHeightForWidth())
+        self.label_com1.setSizePolicy(sizePolicy1)
+        self.label_com1.setMinimumSize(QSize(80, 0))
+        self.label_com1.setFont(font1)
 
-        self.gridLayout.addWidget(self.pushButton_2, 0, 3, 1, 1)
+        self.layout_coms.addWidget(self.label_com1, 0, 0, 1, 1)
 
-        self.pushButton_3 = QPushButton(self.groupBox)
-        self.pushButton_3.setObjectName(u"pushButton_3")
-        sizePolicy1.setHeightForWidth(self.pushButton_3.sizePolicy().hasHeightForWidth())
-        self.pushButton_3.setSizePolicy(sizePolicy1)
+        self.label_com1_freq = QLabel(self.group_com)
+        self.label_com1_freq.setObjectName(u"label_com1_freq")
+        self.label_com1_freq.setMinimumSize(QSize(100, 0))
+        self.label_com1_freq.setFont(font1)
 
-        self.gridLayout.addWidget(self.pushButton_3, 1, 2, 1, 1)
+        self.layout_coms.addWidget(self.label_com1_freq, 0, 1, 1, 1)
 
-        self.pushButton_4 = QPushButton(self.groupBox)
-        self.pushButton_4.setObjectName(u"pushButton_4")
-        sizePolicy1.setHeightForWidth(self.pushButton_4.sizePolicy().hasHeightForWidth())
-        self.pushButton_4.setSizePolicy(sizePolicy1)
+        self.button_com2_rx = SelectedButton(self.group_com)
+        self.button_com2_rx.setObjectName(u"button_com2_rx")
+        sizePolicy.setHeightForWidth(self.button_com2_rx.sizePolicy().hasHeightForWidth())
+        self.button_com2_rx.setSizePolicy(sizePolicy)
 
-        self.gridLayout.addWidget(self.pushButton_4, 1, 3, 1, 1)
-
-
-        self.gridLayout_3.addLayout(self.gridLayout, 0, 0, 1, 1)
+        self.layout_coms.addWidget(self.button_com2_rx, 1, 3, 1, 1)
 
 
-        self.gridLayout_2.addWidget(self.groupBox, 0, 0, 1, 1)
+        self.gridLayout_3.addLayout(self.layout_coms, 0, 0, 1, 1)
 
-        self.groupBox_2 = QGroupBox(ClientWindow)
-        self.groupBox_2.setObjectName(u"groupBox_2")
-        self.groupBox_2.setFont(font)
-        self.verticalLayout = QVBoxLayout(self.groupBox_2)
+        self.spacer_1 = QSpacerItem(0, 20, QSizePolicy.Policy.Expanding, QSizePolicy.Policy.Minimum)
+
+        self.gridLayout_3.addItem(self.spacer_1, 0, 1, 1, 1)
+
+
+        self.gridLayout_2.addWidget(self.group_com, 0, 0, 1, 1)
+
+        self.group_controllers = QGroupBox(ClientWindow)
+        self.group_controllers.setObjectName(u"group_controllers")
+        self.group_controllers.setEnabled(False)
+        sizePolicy1.setHeightForWidth(self.group_controllers.sizePolicy().hasHeightForWidth())
+        self.group_controllers.setSizePolicy(sizePolicy1)
+        self.group_controllers.setFont(font)
+        self.verticalLayout = QVBoxLayout(self.group_controllers)
         self.verticalLayout.setObjectName(u"verticalLayout")
-        self.horizontalLayout = QHBoxLayout()
-        self.horizontalLayout.setObjectName(u"horizontalLayout")
-        self.label_5 = QLabel(self.groupBox_2)
-        self.label_5.setObjectName(u"label_5")
-        sizePolicy.setHeightForWidth(self.label_5.sizePolicy().hasHeightForWidth())
-        self.label_5.setSizePolicy(sizePolicy)
-        self.label_5.setMinimumSize(QSize(100, 0))
+        self.layout_unicom = QHBoxLayout()
+        self.layout_unicom.setObjectName(u"layout_unicom")
+        self.label_unicom = QLabel(self.group_controllers)
+        self.label_unicom.setObjectName(u"label_unicom")
+        sizePolicy1.setHeightForWidth(self.label_unicom.sizePolicy().hasHeightForWidth())
+        self.label_unicom.setSizePolicy(sizePolicy1)
+        self.label_unicom.setMinimumSize(QSize(100, 0))
 
-        self.horizontalLayout.addWidget(self.label_5)
+        self.layout_unicom.addWidget(self.label_unicom)
 
-        self.label_6 = QLabel(self.groupBox_2)
-        self.label_6.setObjectName(u"label_6")
-        sizePolicy.setHeightForWidth(self.label_6.sizePolicy().hasHeightForWidth())
-        self.label_6.setSizePolicy(sizePolicy)
-        self.label_6.setMinimumSize(QSize(100, 0))
+        self.label_unicom_freq = QLabel(self.group_controllers)
+        self.label_unicom_freq.setObjectName(u"label_unicom_freq")
+        sizePolicy1.setHeightForWidth(self.label_unicom_freq.sizePolicy().hasHeightForWidth())
+        self.label_unicom_freq.setSizePolicy(sizePolicy1)
+        self.label_unicom_freq.setMinimumSize(QSize(100, 0))
 
-        self.horizontalLayout.addWidget(self.label_6)
+        self.layout_unicom.addWidget(self.label_unicom_freq)
 
-        self.pushButton_5 = QPushButton(self.groupBox_2)
-        self.pushButton_5.setObjectName(u"pushButton_5")
-        sizePolicy1.setHeightForWidth(self.pushButton_5.sizePolicy().hasHeightForWidth())
-        self.pushButton_5.setSizePolicy(sizePolicy1)
+        self.button_unicom_com1 = SelectedButton(self.group_controllers)
+        self.button_unicom_com1.setObjectName(u"button_unicom_com1")
+        sizePolicy.setHeightForWidth(self.button_unicom_com1.sizePolicy().hasHeightForWidth())
+        self.button_unicom_com1.setSizePolicy(sizePolicy)
 
-        self.horizontalLayout.addWidget(self.pushButton_5)
+        self.layout_unicom.addWidget(self.button_unicom_com1)
 
-        self.pushButton_6 = QPushButton(self.groupBox_2)
-        self.pushButton_6.setObjectName(u"pushButton_6")
-        sizePolicy1.setHeightForWidth(self.pushButton_6.sizePolicy().hasHeightForWidth())
-        self.pushButton_6.setSizePolicy(sizePolicy1)
+        self.button_unicom_com2 = SelectedButton(self.group_controllers)
+        self.button_unicom_com2.setObjectName(u"button_unicom_com2")
+        sizePolicy.setHeightForWidth(self.button_unicom_com2.sizePolicy().hasHeightForWidth())
+        self.button_unicom_com2.setSizePolicy(sizePolicy)
 
-        self.horizontalLayout.addWidget(self.pushButton_6)
-
-
-        self.verticalLayout.addLayout(self.horizontalLayout)
-
-        self.horizontalLayout_2 = QHBoxLayout()
-        self.horizontalLayout_2.setObjectName(u"horizontalLayout_2")
-        self.label_7 = QLabel(self.groupBox_2)
-        self.label_7.setObjectName(u"label_7")
-        sizePolicy.setHeightForWidth(self.label_7.sizePolicy().hasHeightForWidth())
-        self.label_7.setSizePolicy(sizePolicy)
-        self.label_7.setMinimumSize(QSize(100, 0))
-
-        self.horizontalLayout_2.addWidget(self.label_7)
-
-        self.label_8 = QLabel(self.groupBox_2)
-        self.label_8.setObjectName(u"label_8")
-        sizePolicy.setHeightForWidth(self.label_8.sizePolicy().hasHeightForWidth())
-        self.label_8.setSizePolicy(sizePolicy)
-        self.label_8.setMinimumSize(QSize(100, 0))
-
-        self.horizontalLayout_2.addWidget(self.label_8)
-
-        self.pushButton_7 = QPushButton(self.groupBox_2)
-        self.pushButton_7.setObjectName(u"pushButton_7")
-        sizePolicy1.setHeightForWidth(self.pushButton_7.sizePolicy().hasHeightForWidth())
-        self.pushButton_7.setSizePolicy(sizePolicy1)
-
-        self.horizontalLayout_2.addWidget(self.pushButton_7)
-
-        self.pushButton_8 = QPushButton(self.groupBox_2)
-        self.pushButton_8.setObjectName(u"pushButton_8")
-        sizePolicy1.setHeightForWidth(self.pushButton_8.sizePolicy().hasHeightForWidth())
-        self.pushButton_8.setSizePolicy(sizePolicy1)
-
-        self.horizontalLayout_2.addWidget(self.pushButton_8)
+        self.layout_unicom.addWidget(self.button_unicom_com2)
 
 
-        self.verticalLayout.addLayout(self.horizontalLayout_2)
+        self.verticalLayout.addLayout(self.layout_unicom)
 
-        self.verticalSpacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+        self.layout_emer = QHBoxLayout()
+        self.layout_emer.setObjectName(u"layout_emer")
+        self.label_emer = QLabel(self.group_controllers)
+        self.label_emer.setObjectName(u"label_emer")
+        sizePolicy1.setHeightForWidth(self.label_emer.sizePolicy().hasHeightForWidth())
+        self.label_emer.setSizePolicy(sizePolicy1)
+        self.label_emer.setMinimumSize(QSize(100, 0))
 
-        self.verticalLayout.addItem(self.verticalSpacer_2)
+        self.layout_emer.addWidget(self.label_emer)
+
+        self.label_emer_freq = QLabel(self.group_controllers)
+        self.label_emer_freq.setObjectName(u"label_emer_freq")
+        sizePolicy1.setHeightForWidth(self.label_emer_freq.sizePolicy().hasHeightForWidth())
+        self.label_emer_freq.setSizePolicy(sizePolicy1)
+        self.label_emer_freq.setMinimumSize(QSize(100, 0))
+
+        self.layout_emer.addWidget(self.label_emer_freq)
+
+        self.button_emer_com1 = SelectedButton(self.group_controllers)
+        self.button_emer_com1.setObjectName(u"button_emer_com1")
+        sizePolicy.setHeightForWidth(self.button_emer_com1.sizePolicy().hasHeightForWidth())
+        self.button_emer_com1.setSizePolicy(sizePolicy)
+
+        self.layout_emer.addWidget(self.button_emer_com1)
+
+        self.button_emer_com2 = SelectedButton(self.group_controllers)
+        self.button_emer_com2.setObjectName(u"button_emer_com2")
+        sizePolicy.setHeightForWidth(self.button_emer_com2.sizePolicy().hasHeightForWidth())
+        self.button_emer_com2.setSizePolicy(sizePolicy)
+
+        self.layout_emer.addWidget(self.button_emer_com2)
 
 
-        self.gridLayout_2.addWidget(self.groupBox_2, 0, 1, 3, 1)
+        self.verticalLayout.addLayout(self.layout_emer)
 
-        self.groupBox_3 = QGroupBox(ClientWindow)
-        self.groupBox_3.setObjectName(u"groupBox_3")
-        self.groupBox_3.setFont(font)
-        self.gridLayout_5 = QGridLayout(self.groupBox_3)
+        self.spacer_2 = QSpacerItem(20, 40, QSizePolicy.Policy.Minimum, QSizePolicy.Policy.Expanding)
+
+        self.verticalLayout.addItem(self.spacer_2)
+
+
+        self.gridLayout_2.addWidget(self.group_controllers, 0, 1, 3, 1)
+
+        self.group_message = QGroupBox(ClientWindow)
+        self.group_message.setObjectName(u"group_message")
+        self.group_message.setEnabled(False)
+        self.group_message.setFont(font)
+        self.gridLayout_5 = QGridLayout(self.group_message)
         self.gridLayout_5.setObjectName(u"gridLayout_5")
-        self.tabWidget = QTabWidget(self.groupBox_3)
-        self.tabWidget.setObjectName(u"tabWidget")
-        self.tab = QWidget()
-        self.tab.setObjectName(u"tab")
-        self.tabWidget.addTab(self.tab, "")
-        self.tab_2 = QWidget()
-        self.tab_2.setObjectName(u"tab_2")
-        self.tabWidget.addTab(self.tab_2, "")
+        self.channel_messages = QTabWidget(self.group_message)
+        self.channel_messages.setObjectName(u"channel_messages")
+        self.unicom = QWidget()
+        self.unicom.setObjectName(u"unicom")
+        self.channel_messages.addTab(self.unicom, "")
 
-        self.gridLayout_5.addWidget(self.tabWidget, 0, 0, 1, 1)
+        self.gridLayout_5.addWidget(self.channel_messages, 0, 0, 1, 1)
+
+        self.layout_send = QHBoxLayout()
+        self.layout_send.setObjectName(u"layout_send")
+        self.label_unicom_2 = QLabel(self.group_message)
+        self.label_unicom_2.setObjectName(u"label_unicom_2")
+
+        self.layout_send.addWidget(self.label_unicom_2)
+
+        self.line_edit_message = QLineEdit(self.group_message)
+        self.line_edit_message.setObjectName(u"line_edit_message")
+
+        self.layout_send.addWidget(self.line_edit_message)
 
 
-        self.gridLayout_2.addWidget(self.groupBox_3, 1, 0, 1, 1)
+        self.gridLayout_5.addLayout(self.layout_send, 1, 0, 1, 1)
+
+
+        self.gridLayout_2.addWidget(self.group_message, 1, 0, 1, 1)
 
 
         self.retranslateUi(ClientWindow)
 
-        self.tabWidget.setCurrentIndex(0)
+        self.channel_messages.setCurrentIndex(0)
 
 
         QMetaObject.connectSlotsByName(ClientWindow)
@@ -219,26 +246,26 @@ class Ui_ClientWindow(object):
 
     def retranslateUi(self, ClientWindow):
         ClientWindow.setWindowTitle(QCoreApplication.translate("ClientWindow", u"PilotClient", None))
-        self.groupBox.setTitle(QCoreApplication.translate("ClientWindow", u"\u901a\u8baf\u9762\u677f", None))
-        self.label_2.setText(QCoreApplication.translate("ClientWindow", u"COM2:", None))
-        self.label_4.setText(QCoreApplication.translate("ClientWindow", u"---.---", None))
-        self.label.setText(QCoreApplication.translate("ClientWindow", u"COM1:", None))
-        self.pushButton.setText(QCoreApplication.translate("ClientWindow", u"TX", None))
-        self.label_3.setText(QCoreApplication.translate("ClientWindow", u"---.---", None))
-        self.pushButton_2.setText(QCoreApplication.translate("ClientWindow", u"RX", None))
-        self.pushButton_3.setText(QCoreApplication.translate("ClientWindow", u"TX", None))
-        self.pushButton_4.setText(QCoreApplication.translate("ClientWindow", u"RX", None))
-        self.groupBox_2.setTitle(QCoreApplication.translate("ClientWindow", u"\u5728\u7ebf\u7ba1\u5236\u5458", None))
-        self.label_5.setText(QCoreApplication.translate("ClientWindow", u"UNICOM", None))
-        self.label_6.setText(QCoreApplication.translate("ClientWindow", u"122.800", None))
-        self.pushButton_5.setText(QCoreApplication.translate("ClientWindow", u"COM1", None))
-        self.pushButton_6.setText(QCoreApplication.translate("ClientWindow", u"COM2", None))
-        self.label_7.setText(QCoreApplication.translate("ClientWindow", u"EMER", None))
-        self.label_8.setText(QCoreApplication.translate("ClientWindow", u"121.500", None))
-        self.pushButton_7.setText(QCoreApplication.translate("ClientWindow", u"COM1", None))
-        self.pushButton_8.setText(QCoreApplication.translate("ClientWindow", u"COM2", None))
-        self.groupBox_3.setTitle(QCoreApplication.translate("ClientWindow", u"\u6587\u5b57\u6d88\u606f", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab), QCoreApplication.translate("ClientWindow", u"UNICOM", None))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.tab_2), QCoreApplication.translate("ClientWindow", u"---.---", None))
+        self.group_com.setTitle(QCoreApplication.translate("ClientWindow", u"\u901a\u8baf\u9762\u677f", None))
+        self.button_com2_tx.setText(QCoreApplication.translate("ClientWindow", u"TX", None))
+        self.button_com1_rx.setText(QCoreApplication.translate("ClientWindow", u"RX", None))
+        self.label_com2_freq.setText(QCoreApplication.translate("ClientWindow", u"---.---", None))
+        self.label_com2.setText(QCoreApplication.translate("ClientWindow", u"COM2:", None))
+        self.button_com1_tx.setText(QCoreApplication.translate("ClientWindow", u"TX", None))
+        self.label_com1.setText(QCoreApplication.translate("ClientWindow", u"COM1:", None))
+        self.label_com1_freq.setText(QCoreApplication.translate("ClientWindow", u"---.---", None))
+        self.button_com2_rx.setText(QCoreApplication.translate("ClientWindow", u"RX", None))
+        self.group_controllers.setTitle(QCoreApplication.translate("ClientWindow", u"\u5728\u7ebf\u7ba1\u5236\u5458", None))
+        self.label_unicom.setText(QCoreApplication.translate("ClientWindow", u"UNICOM", None))
+        self.label_unicom_freq.setText(QCoreApplication.translate("ClientWindow", u"122.800", None))
+        self.button_unicom_com1.setText(QCoreApplication.translate("ClientWindow", u"COM1", None))
+        self.button_unicom_com2.setText(QCoreApplication.translate("ClientWindow", u"COM2", None))
+        self.label_emer.setText(QCoreApplication.translate("ClientWindow", u"EMER", None))
+        self.label_emer_freq.setText(QCoreApplication.translate("ClientWindow", u"121.500", None))
+        self.button_emer_com1.setText(QCoreApplication.translate("ClientWindow", u"COM1", None))
+        self.button_emer_com2.setText(QCoreApplication.translate("ClientWindow", u"COM2", None))
+        self.group_message.setTitle(QCoreApplication.translate("ClientWindow", u"\u6587\u5b57\u6d88\u606f", None))
+        self.channel_messages.setTabText(self.channel_messages.indexOf(self.unicom), QCoreApplication.translate("ClientWindow", u"UNICOM", None))
+        self.label_unicom_2.setText(QCoreApplication.translate("ClientWindow", u"UNICOM", None))
     # retranslateUi
 

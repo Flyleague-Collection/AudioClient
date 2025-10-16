@@ -8,6 +8,7 @@ from PySide6.QtCore import QObject, Signal
 from loguru import logger
 
 from src.model.voice_models import ControlMessage, MessageType, VoicePacket
+from src.signal import Signals
 
 
 class NetworkHandler(QObject):
@@ -16,12 +17,14 @@ class NetworkHandler(QObject):
     connection_status_changed = Signal(bool)
     error_occurred = Signal(str)
 
-    def __init__(self):
+    def __init__(self, signals: Signals):
         super().__init__()
 
         self._tcp_socket: Optional[socket] = None
         self._udp_socket: Optional[socket] = None
         self._server_address: Optional[tuple] = None
+
+        self._signals = signals
 
         self._tcp_running = False
         self._udp_running = False
@@ -30,10 +33,14 @@ class NetworkHandler(QObject):
         self._cid: Optional[int] = None
         self._callsign: Optional[str] = None
 
+    def _log_message(self, level: str, message: str):
+        self._signals.log_message.emit("Network", level, message)
+
     def connect_to_server(self, host: str, tcp_port: int, udp_port: int, jwt_token: str):
         try:
             self._server_address = (host, udp_port)
 
+            self._log_message("INFO", f"Connect to tcp://{host}:{tcp_port}")
             self._tcp_socket = socket(AF_INET, SOCK_STREAM)
             self._tcp_socket.connect((host, tcp_port))
 
@@ -41,6 +48,7 @@ class NetworkHandler(QObject):
             tcp_thread = Thread(target=self._tcp_receive_loop, daemon=True)
             tcp_thread.start()
 
+            self._log_message("INFO", f"Connect to udp://{host}:{udp_port}")
             self._udp_socket = socket(AF_INET, SOCK_DGRAM)
             self._udp_socket.connect((host, udp_port))
             self._udp_running = True
@@ -54,12 +62,14 @@ class NetworkHandler(QObject):
             logger.info("Connected to voice server")
         except Exception as e:
             logger.error(f"Failed to connect to server: {e}")
+            self._log_message("ERROR", f"Failed to connect to server")
             self.error_occurred.emit(f"连接失败: {e}")
             self.cleanup()
 
     def disconnect(self):
         self.cleanup()
         self.connection_status_changed.emit(False)
+        self._log_message("INFO", f"Disconnected from voice server")
         logger.info("Disconnected from voice server")
 
     def send_control_message(self, message: ControlMessage):

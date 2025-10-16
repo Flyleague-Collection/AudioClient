@@ -17,7 +17,7 @@ from PySide6.QtGui import (QBrush, QColor, QConicalGradient, QCursor,
     QPalette, QPixmap, QRadialGradient, QTransform)
 from PySide6.QtWidgets import (QApplication, QGridLayout, QLabel, QLayout,
     QLineEdit, QPushButton, QSizePolicy, QStackedWidget,
-    QWidget)
+    QTextBrowser, QWidget)
 
 from src.ui.component.indicator_button import IndicatorButton
 
@@ -185,6 +185,12 @@ class Ui_ConnectWindow(object):
 
 
         self.gridLayout.addLayout(self.layout_connect, 0, 0, 1, 1)
+
+        self.text_browser_log = QTextBrowser(ConnectWindow)
+        self.text_browser_log.setObjectName(u"text_browser_log")
+        self.text_browser_log.setMaximumSize(QSize(16777215, 100))
+
+        self.gridLayout.addWidget(self.text_browser_log, 3, 0, 1, 2)
 
 
         self.retranslateUi(ConnectWindow)

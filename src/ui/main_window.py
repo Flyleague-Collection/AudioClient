@@ -56,6 +56,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
         self.action_settings.triggered.connect(self.show_config_window)
         signals.show_config_windows.connect(self.show_config_window)
         signals.logout_request.connect(self.logout_request)
+        signals.resize_window.connect(self.resize_window)
 
     def logout_request(self) -> None:
         self.windows.setCurrentIndex(1)
@@ -69,7 +70,7 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def initialize_complete(self) -> None:
         self.setMinimumSize(0, 0)
 
-        self.voice_client = VoiceClient(self.audio_signal)
+        self.voice_client = VoiceClient(self.signals, self.audio_signal)
 
         self.login = LoginWindow(self.voice_client, self.signals)
         self.login.setObjectName(u"login")
@@ -131,3 +132,8 @@ class MainWindow(QMainWindow, Ui_MainWindow):
     def show_config_window(self) -> None:
         self.config.update_config_data()
         self.config.show()
+
+    def resize_window(self, width: int, height: int, to_center: bool) -> None:
+        self.resize(width, height)
+        if to_center:
+            self.center()

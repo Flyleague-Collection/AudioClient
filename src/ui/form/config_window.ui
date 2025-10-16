@@ -44,13 +44,69 @@
      <property name="bottomMargin">
       <number>3</number>
      </property>
+     <item row="9" column="1" colspan="2">
+      <widget class="QComboBox" name="combo_box_audio_output"/>
+     </item>
+     <item row="6" column="0">
+      <widget class="QLabel" name="label_udp_port">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>UDP端口</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1" colspan="2">
+      <widget class="QLineEdit" name="line_edit_server_address"/>
+     </item>
+     <item row="7" column="1" colspan="2">
+      <widget class="QComboBox" name="combo_box_audio_driver"/>
+     </item>
      <item row="6" column="1" colspan="2">
       <widget class="QLineEdit" name="line_edit_udp_port"/>
      </item>
-     <item row="0" column="2">
-      <widget class="QCheckBox" name="check_box_remember_me">
+     <item row="1" column="2">
+      <widget class="QCheckBox" name="check_box_debug_mode">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="text">
-        <string>记住我</string>
+        <string>调试模式</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" colspan="2">
+      <widget class="QLineEdit" name="line_edit_account"/>
+     </item>
+     <item row="8" column="0">
+      <widget class="QLabel" name="label_audio_input">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>音频输入</string>
        </property>
       </widget>
      </item>
@@ -99,46 +155,11 @@
        </item>
       </widget>
      </item>
-     <item row="7" column="0">
-      <widget class="QLabel" name="label_audio_driver">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>音频驱动</string>
-       </property>
-      </widget>
+     <item row="8" column="1" colspan="2">
+      <widget class="QComboBox" name="combo_box_audio_input"/>
      </item>
-     <item row="9" column="1" colspan="2">
-      <widget class="QComboBox" name="combo_box_audio_output"/>
-     </item>
-     <item row="9" column="0">
-      <widget class="QLabel" name="label_audio_output">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>音频输出</string>
-       </property>
-      </widget>
+     <item row="5" column="1" colspan="2">
+      <widget class="QLineEdit" name="line_edit_tcp_port"/>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="label_log_level">
@@ -156,95 +177,6 @@
        </property>
        <property name="text">
         <string>日志等级</string>
-       </property>
-      </widget>
-     </item>
-     <item row="1" column="2">
-      <widget class="QCheckBox" name="check_box_debug_mode">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="text">
-        <string>调试模式</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1" colspan="2">
-      <widget class="QLineEdit" name="line_edit_password"/>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLabel" name="label_config_version_2">
-       <property name="minimumSize">
-        <size>
-         <width>0</width>
-         <height>23</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>1.0.0</string>
-       </property>
-      </widget>
-     </item>
-     <item row="6" column="0">
-      <widget class="QLabel" name="label_udp_port">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>UDP端口</string>
-       </property>
-      </widget>
-     </item>
-     <item row="4" column="1" colspan="2">
-      <widget class="QLineEdit" name="line_edit_server_address"/>
-     </item>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_config_version">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>配置文件版本</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_account">
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>100</width>
-         <height>0</height>
-        </size>
-       </property>
-       <property name="text">
-        <string>账号</string>
        </property>
       </widget>
      </item>
@@ -267,8 +199,8 @@
        </property>
       </widget>
      </item>
-     <item row="8" column="0">
-      <widget class="QLabel" name="label_audio_input">
+     <item row="9" column="0">
+      <widget class="QLabel" name="label_audio_output">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
          <horstretch>0</horstretch>
@@ -282,21 +214,64 @@
         </size>
        </property>
        <property name="text">
-        <string>音频输入</string>
+        <string>音频输出</string>
        </property>
       </widget>
      </item>
-     <item row="5" column="1" colspan="2">
-      <widget class="QLineEdit" name="line_edit_tcp_port"/>
+     <item row="10" column="1" colspan="2">
+      <widget class="HotkeyButton" name="button_ptt">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>23</height>
+        </size>
+       </property>
+       <property name="text">
+        <string/>
+       </property>
+      </widget>
      </item>
-     <item row="7" column="1" colspan="2">
-      <widget class="QComboBox" name="combo_box_audio_driver"/>
+     <item row="3" column="1" colspan="2">
+      <widget class="QLineEdit" name="line_edit_password"/>
      </item>
-     <item row="8" column="1" colspan="2">
-      <widget class="QComboBox" name="combo_box_audio_input"/>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label_config_version_2">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>23</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>1.0.0</string>
+       </property>
+      </widget>
      </item>
-     <item row="2" column="1" colspan="2">
-      <widget class="QLineEdit" name="line_edit_account"/>
+     <item row="0" column="2">
+      <widget class="QCheckBox" name="check_box_remember_me">
+       <property name="text">
+        <string>记住我</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_account">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>账号</string>
+       </property>
+      </widget>
      </item>
      <item row="5" column="0">
       <widget class="QLabel" name="label_tcp_port">
@@ -355,16 +330,41 @@
        </property>
       </widget>
      </item>
-     <item row="10" column="1" colspan="2">
-      <widget class="HotkeyButton" name="button_ptt">
+     <item row="7" column="0">
+      <widget class="QLabel" name="label_audio_driver">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
        <property name="minimumSize">
         <size>
-         <width>0</width>
-         <height>23</height>
+         <width>100</width>
+         <height>0</height>
         </size>
        </property>
        <property name="text">
-        <string/>
+        <string>音频驱动</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_config_version">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>100</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>配置文件版本</string>
        </property>
       </widget>
      </item>

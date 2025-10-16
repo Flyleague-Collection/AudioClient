@@ -95,6 +95,8 @@ class ControllerWindow(QWidget, Ui_ControllerWindow):
         self.voice_client.set_transmitter_receive_flag(121500, self.button_emer_freq_rx.selected)
 
     def connect_state_changed(self, state: ConnectionState):
+        if not self.voice_client.is_atc:
+            return
         if state == ConnectionState.READY:
             self.label_main_freq_v.setText(f"{self.voice_client.main_frequency / 1000:.3f}")
             self.button_main_freq_rx.selected = True

@@ -5,7 +5,7 @@ from PySide6.QtCore import QObject, QTimer, Signal
 from loguru import logger
 
 from src.model.voice_models import ConnectionState, ControlMessage, MessageType, VoicePacket, VoicePacketBuilder
-from src.signal.audio_signal import AudioSignal
+from src.signal import AudioSignal, Signals
 from .audio_handler import AudioHandler
 from .network_handler import NetworkHandler
 
@@ -18,11 +18,12 @@ class VoiceClient(QObject):
     error_occurred = Signal(str)
     update_current_frequency = Signal(int)
 
-    def __init__(self, audio_signal: AudioSignal):
+    def __init__(self, signals: Signals, audio_signal: AudioSignal):
         super().__init__()
 
-        self._network = NetworkHandler()
+        self._network = NetworkHandler(signals)
         self._audio = AudioHandler(audio_signal)
+        self._signals = signals
 
         self._connection_state = ConnectionState.DISCONNECTED
         self._cid: Optional[int] = None
@@ -39,6 +40,9 @@ class VoiceClient(QObject):
         self._heartbeat_timer = QTimer()
         self._heartbeat_timer.timeout.connect(self._send_heartbeat)
         self._heartbeat_timer.setInterval(15000)
+
+    def _log_message(self, level: str, message: str):
+        self._signals.log_message.emit("VoiceClient", level, message)
 
     def _connect_signals(self):
         self._network.control_message_received.connect(self._handle_control_message)
@@ -78,6 +82,7 @@ class VoiceClient(QObject):
             transmitter=transmitter,
             data=str(frequency)
         )
+        self._log_message("INFO", f"Switch to {frequency / 1000:.3f}mHz")
         self._network.send_control_message(message)
 
     def send_text_message(self, target: str, message: str):
@@ -133,7 +138,7 @@ class VoiceClient(QObject):
 
         if message.type == MessageType.ERROR:
             logger.error(f"Server error: {message.data}")
-            self.error_occurred.emit(f"{message.data}")
+            self.error_occurred.emit(message.data)
         elif message.type == MessageType.PONG:
             logger.debug("Received pong from server")
         elif message.type == MessageType.MESSAGE:
@@ -148,6 +153,8 @@ class VoiceClient(QObject):
                         self._main_frequency = int(data[-1])
                         self._is_atc = True
                     self._set_connection_state(ConnectionState.READY)
+                    self._log_message("INFO", "Identity verification passed")
+                    self._send_voice_data(b"")
         elif message.type == MessageType.DISCONNECT:
             self._heartbeat_timer.stop()
             self._audio.stop_recording()
@@ -169,6 +176,10 @@ class VoiceClient(QObject):
             self._set_connection_state(ConnectionState.DISCONNECTED)
 
     def set_transmitter_receive_flag(self, frequency: int, receive_flag: bool):
+        if receive_flag:
+            self._log_message("INFO", f"Start listening frequency {frequency / 1000:.3f}mHz")
+        else:
+            self._log_message("INFO", f"Stop listening frequency {frequency / 1000:.3f}mHz")
         self._transmitter_receive_flag[frequency] = receive_flag
 
     def cleanup(self):

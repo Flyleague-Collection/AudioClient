@@ -8,3 +8,5 @@ __pycache__/
 .idea/
 logs/
 /config/
+dist/
+build/
